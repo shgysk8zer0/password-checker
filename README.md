@@ -13,6 +13,9 @@
 ![Twitter Follow](https://img.shields.io/twitter/follow/shgysk8zer0.svg?style=social)
 - - - 
 
+- [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
+- [Contributing](./.github/CONTRIBUTING.md)
+
 A Progressive Web App that submits the first 5 characters of a SHA-1 hash of a password
 to [haveibeenpwned](https://haveibeenpwned.com/) to check if a password is found in
 a breach.
