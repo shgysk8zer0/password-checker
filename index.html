@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="no-js" itemtype="http://schema.org/WebPage" itemscope="">
+<html lang="en" dir="ltr" class="no-js" itemtype="http://schema.org/WebPage" itemscope="" data-service-worker="./service-worker.js">
 	<head>
 		<base href="/" />
 		<meta charset="utf-8" />
@@ -109,7 +109,12 @@
 						<use xlink:href="/img/icons.svg#linkedin" />
 					</svg>
 				</a>
-		</div>
+			</div>
 		</footer>
+		<button type="button" is="share-button" class="round shadow fixed">
+			<svg class="current-color icon">
+				<use xlink:href="/img/icons.svg#public-share" />
+			</svg>
+		</button>
 	</body>
 </html>

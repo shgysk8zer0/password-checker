@@ -60,6 +60,14 @@ legend {
 	max-width: 80%;
 }
 
+button[is="share-button"] {
+	bottom: 1rem;
+	right: 1rem;
+	border-radius: 50%;
+	padding: 0.8rem;
+	font-size: 1.5rem;
+}
+
 @media (max-width: 800px) {
 	.mobile-hidden {
 		display: none;
