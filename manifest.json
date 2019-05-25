@@ -1,0 +1,20 @@
+{
+  "name": "Password Checker",
+  "short_name": "pwd-checker",
+  "icons": [{
+    "src": "/img/favicon.svg",
+    "sizes": "any",
+    "type": "image/svg+xml"
+  }, {
+    "src": "/img/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }, {
+    "src": "/img/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "theme_color": "#528ff9",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

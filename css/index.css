@@ -1,0 +1,67 @@
+@charset "UTF-8";
+@import url("./vars.css");
+@import url("./normalize.css/normalize.css");
+@import url("./core-css/rem.css");
+@import url("./core-css/viewport.css");
+@import url("./core-css/element.css");
+@import url("./core-css/class-rules.css");
+@import url("./core-css/fonts.css");
+@import url("./animate.css/animate.css");
+@import url("./core-css/animations.css");
+@import url("./layout.css");
+
+nav {
+	padding: 0.6em;
+	font-size: 1.2em;
+}
+
+nav a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.content {
+	max-width: 800px;
+	margin: 1.2em;
+	padding: 0.4em 1.4em;
+}
+
+a {
+	color: inherit;
+}
+
+fieldset {
+	padding: 2.3em;
+}
+
+legend {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+#footer {
+	padding: 1.4em;
+	background: var(--contrast-color);
+}
+
+.social-links svg {
+	width: 3rem;
+	height: 3rem;
+}
+
+.form-group {
+	border: 2px solid #b6b6b3;
+	border-radius: 6px;
+	padding: 2px;
+}
+
+.form-group > input {
+	border: none;
+	max-width: 80%;
+}
+
+@media (max-width: 800px) {
+	.mobile-hidden {
+		display: none;
+	}
+}

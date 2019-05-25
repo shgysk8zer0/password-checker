@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js" itemtype="http://schema.org/WebPage" itemscope="">
+	<head>
+		<base href="/" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="robots" content="follow,index" />
+		<meta name="description" content="Checks passwords against have i been pwned" />
+		<meta itemprop="description" content="Checks passwords against have i been pwned" />
+		<meta name="keywords" content="passwords, security, have i been pwned" />
+		<meta itemprop="keywords" content="passwords, security, have i been pwned" />
+		<meta name="referrer" content="origin-when-cross-origin"/>
+		<meta name="mobile-web-app-capable" content="yes" />
+		<!-- Social data -->
+		<meta property="og:type" content="website" />
+		<meta property="og:description" content="Checks passwords against have i been pwned" />
+		<meta property="og:keywords" content="passwords, security, have i been pwned" />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:description" content="Checks passwords against have i been pwned" />
+		<!-- / Social data -->
+		<meta name="msapplication-TileColor" content="#528ff9" />
+		<meta name="msapplication-config" content="/img/browserconfig.xml" />
+		<meta name="theme-color" content="#528ff9" />
+		<title itemprop="headline">Password Checker</title>
+		<script type="module" src="/js/index.js" async=""></script>
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="license" href="/LICENSE" />
+		<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" sizes="any" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/img/icon-16.png" />
+		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#528ff9" />
+		<link rel="shortcut icon" href="/img/favicon.ico" />
+		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
+		<link rel="stylesheet" href="/css/index.css" media="all" />
+	</head>
+	<body id="top" class="border-box smooth-scroll font-main background-primary color-default">
+		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
+			<a href="#top">Try it out</a>
+			<span class="separator">|</span>
+			<a href="#how-it-works">How it works</a>
+		</nav>
+		<main >
+			<form name="haveIBeenPwned" id="form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" autocomplete="off">
+				<fieldset class="border-none">
+					<legend>
+						<span>Check your password on</span>
+						<a href="https://haveibeenpwned.com/">Have I Been Pwned</a>
+					</legend>
+					<label for="password" class="form-group" title="Enter password to check">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#dialog-password" />
+						</svg>
+						<input type="password" name="password" id="password" placeholder="********" required="" />
+					</label>
+				</fieldset>
+				<div>
+					<button type="submit" class="btn btn-accept" title="Check password">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#check" />
+						</svg>
+						<span class="mobile-hidden">Check Password</span>
+					</button>
+					<button type="reset" class="btn btn-reject" title="Clear form">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#x" />
+						</svg>
+						<span class="mobile-hidden">Clear form</span>
+					</button>
+				</div>
+			</form>
+			<br />
+			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="">
+				<summary>
+					<h3 class="inline-block">How this works</h3>
+				</summary>
+				<div>
+					<p>The first thing you should know is that no external code runs here, and that your passwords <em>(including their full hashes)</em> are never transmitted.</p>
+					<p>Instead, when you hit submit, a SHA-1 hash of your password is created in your browser, and the first 6 characters of that hash are sent to the Have I Been Pwned API. The response contains a list of hashes that begin with the same 6 characters along with how many times that password has been found in data breaches.</p>
+					<p>JavaScript in your browser then filters through the matching hashes to see if any of them match the full hash of your password and notifies you of how many times that was found.</p>
+				</div>
+			</details>
+		</main>
+		<footer id="footer" class="background-contrast color-alt">
+			<p>Made using the <a href="https://haveibeenpwned.com/API/v2#PwnedPasswords">Have I Been Pwned API</a>.</p>
+			<div class="social-links">
+				<a href="https://github.com/shgysk8zer0/" target="_blank" rel="external noopener">
+					<svg class="social-icon">
+						<use xlink:href="/img/icons.svg#mark-github" />
+					</svg>
+				</a>
+				<a href="https://github.com/shgysk8zer0/password-checker" target="_blank" rel="external noopener">
+					<svg class="social-icon">
+						<use xlink:href="/img/icons.svg#repo" />
+					</svg>
+				</a>
+				<a href="https://github.com/shgysk8zer0/password-checker/issues" target="_blank" rel="external noopener">
+					<svg class="social-icon">
+						<use xlink:href="/img/icons.svg#issue-opened" />
+					</svg>
+				</a>
+				<a href="https://twitter.com/shgysk8zer0" target="_blank" rel="external noopener" itemprop="sameAs">
+					<svg class="social-icon">
+						<use xlink:href="/img/icons.svg#twitter" />
+					</svg>
+				</a>
+				<a href="https://www.linkedin.com/in/chris-zuber-455346141/" target="_blank" rel="external noopener" itemprop="sameAs">
+					<svg class="social-icon">
+						<use xlink:href="/img/icons.svg#linkedin" />
+					</svg>
+				</a>
+		</div>
+		</footer>
+	</body>
+</html>
