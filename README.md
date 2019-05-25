@@ -15,6 +15,7 @@
 
 - [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
 - [Contributing](./.github/CONTRIBUTING.md)
+- [Security Policy](./.github/SECURITY.md)
 
 A Progressive Web App that submits the first 5 characters of a SHA-1 hash of a password
 to [haveibeenpwned](https://haveibeenpwned.com/) to check if a password is found in
