@@ -1,6 +1,6 @@
 {
   "name": "password-checker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Checks passwords against have i been pwned",
   "config": {
