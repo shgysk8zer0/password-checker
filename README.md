@@ -1,4 +1,6 @@
 # [Password Checker](https://stupefied-franklin-e519bf.netlify.com/)
+![](img/favicon.svg)
+
 [![Build Status](https://travis-ci.org/shgysk8zer0/password-checker.svg?branch=master)](https://travis-ci.org/shgysk8zer0/password-checker)
 [![GitHub license](https://img.shields.io/github/license/shgysk8zer0/password-checker.svg)](https://github.com/shgysk8zer0/password-checker/blob/master/LICENSE)
 ![GitHub last commit](https://img.shields.io/github/last-commit/shgysk8zer0/password-checker.svg)
@@ -16,6 +18,7 @@
 - [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
 - [Contributing](./.github/CONTRIBUTING.md)
 - [Security Policy](./.github/SECURITY.md)
+
 
 A Progressive Web App that submits the first 5 characters of a SHA-1 hash of a password
 to [haveibeenpwned](https://haveibeenpwned.com/) to check if a password is found in
