@@ -27,7 +27,7 @@
       connect-src 'self' https://api.pwnedpasswords.com;
       font-src 'self';
       media-src 'none';
-      child-src 'none';
+      child-src 'self';
       manifest-src 'self';
       form-action 'self';
       report-uri https://superuser.report-uri.com/r/d/csp/enforce;
