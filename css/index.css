@@ -1,0 +1,87 @@
+@charset "UTF-8";
+@import url("./vars.css");
+@import url("./normalize.css/normalize.css");
+@import url("./core-css/rem.css");
+@import url("./core-css/viewport.css");
+@import url("./core-css/element.css");
+@import url("./core-css/class-rules.css");
+@import url("./core-css/fonts.css");
+@import url("./animate.css/animate.css");
+@import url("./core-css/animations.css");
+@import url("./layout.css");
+
+nav {
+	padding: 0.6em;
+	font-size: 1.2em;
+}
+
+nav a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.content {
+	max-width: 800px;
+	margin: 1.2em;
+	padding: 0.4em 1.4em;
+}
+
+a {
+	color: inherit;
+}
+
+fieldset {
+	padding: 2.3em;
+}
+
+legend {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+#footer {
+	padding: 1.4em;
+	background: var(--contrast-color);
+}
+
+.social-links {
+	font-size: 1.3rem;
+}
+
+.social-links .cols {
+	padding: 0 1.5rem;
+}
+
+.social-links a svg {
+	display: inline-block;
+	transition: transform 600ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.social-links a:hover svg {
+	transform: rotate(1turn) scale(1.3);
+}
+
+.form-group {
+	border: 2px solid #b6b6b3;
+	border-radius: 6px;
+	padding: 2px;
+}
+
+.form-group > input {
+	border: none;
+	max-width: 80%;
+}
+
+button[is="share-button"] {
+	bottom: 1rem;
+	right: 1rem;
+	border-radius: 50%;
+	padding: 0.8rem;
+	font-size: 1.5rem;
+}
+
+@media (max-width: 800px) {
+	.mobile-hidden {
+		display: none;
+	}
+}
