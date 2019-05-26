@@ -2,7 +2,7 @@
 // 2019-05-26 09:30
 const config = {
 	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.1',
-	caches: [
+	stale: [
 		'/',
 		'/js/index.js',
 		'/css/index.css',
@@ -39,7 +39,7 @@ self.addEventListener('install', async () => {
 	const old = keys.filter(k => k !== config.version);
 	await Promise.all(old.map(key => caches.delete(key)));
 
-	await cache.addAll(config.caches);
+	await cache.addAll(config.stale);
 	skipWaiting();
 });
 
@@ -57,7 +57,7 @@ self.addEventListener('fetch', async event => {
 		return cached instanceof Response ? cached : fetch(request);
 	}
 
-	if (event.request.method === 'GET' && config.caches.includes(event.request.url)) {
+	if (event.request.method === 'GET' && config.stale.includes(event.request.url)) {
 		event.respondWith(get(event.request));
 	}
 });
