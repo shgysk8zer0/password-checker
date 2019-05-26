@@ -1,7 +1,7 @@
 'use strict';
 // 2019-05-26 09:30
 const config = {
-	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.1',
+	version: '1.0.2',
 	stale: [
 		'/',
 		'/js/index.js',
@@ -9,12 +9,13 @@ const config = {
 		'/img/icons.svg',
 		'/img/apple-touch-icon.png',
 		'/img/favicon.svg',
+		'/img/octicons/mail.svg',
 		'/js/std-js/deprefixer.js',
 		'/js/std-js/shims.js',
 		'/js/share-button.js',
-		'/js/have-i-been-pwned.js',
+		'/js/share-config.js',
+		'/js/have-i-been-pwned-form.js',
 		'/js/std-js/functions.js',
-		'/js/std-js/asyncDialog.js',
 		'/css/vars.css',
 		'/css/normalize.css/normalize.css',
 		'/css/core-css/rem.css',

@@ -46,18 +46,23 @@
 		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
 		<link rel="stylesheet" href="/css/index.css" media="all" />
 	</head>
-	<body id="top" class="font-main background-primary color-default">
+	<body id="top" class="font-main background-primary color-default" contextmenu="nav-menu">
+		<menu type="context" id="nav-menu">
+			<menu label="Navigate">
+				<menuitem label="Check your password" icon="/img/adwaita-icons/status/dialog-password.svg" data-scroll-to="#password-form"></menuitem>
+				<menuitem label="Check your email address" icon="/img/octicons/mail.svg" data-scroll-to="#email-form"></menuitem>
+			</menu>
+		</menu>
 		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
 			<a href="#top">Try it out</a>
 			<span class="separator">|</span>
 			<a href="#how-it-works">How it works</a>
 		</nav>
 		<main >
-			<form name="haveIBeenPwned" id="form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off">
+			<form is="have-i-been-pwned" mode="password" name="passwordForm" id="password-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
 				<fieldset class="border-none">
 					<legend>
-						<span>Check your password on</span>
-						<a href="https://haveibeenpwned.com/" rel="external noopener">Have I Been Pwned</a>
+						<span>Check your password</span>
 					</legend>
 					<label for="password" class="form-group" title="Enter password to check">
 						<svg class="current-color icon">
@@ -79,9 +84,37 @@
 						</svg>
 						<span class="mobile-hidden">Clear form</span>
 					</button>
+					<section id="password-found-results"></section>
 				</div>
 			</form>
-			<section id="breaches" class="grid"></section>
+			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
+				<fieldset class="border-none">
+					<legend>
+						<span>Check your email address</span>
+					</legend>
+					<label for="email" class="form-group" title="Enter email to check">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#mail" />
+						</svg>
+						<input type="email" name="email" id="email" placeholder="user@example.com" required="" />
+					</label>
+				</fieldset>
+				<div>
+					<button type="submit" class="btn btn-accept" title="Check email">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#check" />
+						</svg>
+						<span class="mobile-hidden">Check Email</span>
+					</button>
+					<button type="reset" class="btn btn-reject" title="Clear form">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#x" />
+						</svg>
+						<span class="mobile-hidden">Clear form</span>
+					</button>
+				</div>
+				<section id="breaches" class="grid"></section>
+			</form>
 			<br />
 			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="">
 				<summary>
@@ -168,6 +201,11 @@
 				</h4>
 				<blockquote class="breach-description"></blockquote>
 		</div>
+		</template>
+		<template id="password-found-template">
+			<div class="password-found">
+				<p>Your password was found <b class="found"></b> times.</p>
+			</div>
 		</template>
 	</body>
 </html>
