@@ -1,92 +1,63 @@
-// 2019-05-25 08:14
+'use strict';
+// 2019-05-26 09:30
 const config = {
-	version: '1.0.0',
-	caches: [
-		// Main assets
+	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.1',
+	stale: [
 		'/',
 		'/js/index.js',
 		'/css/index.css',
 		'/img/icons.svg',
-	],
-	ignored: [
-		'/service-worker.js',
-		'/manifest.json',
-	],
-	paths: [
-		'/js/',
-		'/css/',
-		'/img/',
-		'/fonts/',
-	],
+		'/img/apple-touch-icon.png',
+		'/img/favicon.svg',
+		'/js/std-js/deprefixer.js',
+		'/js/std-js/shims.js',
+		'/js/share-button.js',
+		'/js/have-i-been-pwned.js',
+		'/js/std-js/functions.js',
+		'/js/std-js/asyncDialog.js',
+		'/css/vars.css',
+		'/css/normalize.css/normalize.css',
+		'/css/core-css/rem.css',
+		'/css/core-css/viewport.css',
+		'/css/core-css/element.css',
+		'/css/core-css/class-rules.css',
+		'/css/core-css/fonts.css',
+		'/css/animate.css/animate.css',
+		'/css/core-css/animations.css',
+		'/css/layout.css',
+		'/js/std-js/Notification.js',
+		'/js/std-js/webShareApi.js',
+		'/js/std-js/share-config.js',
+		'/js/std-js/esQuery.js',
+		'/css/core-css/utility.css',
+	].map(path => new URL(path, location.origin).href),
 };
 
 self.addEventListener('install', async () => {
 	const cache = await caches.open(config.version);
 	const keys = await caches.keys();
-	await keys.forEach(async key => {
-		if (key !== config.version) {
-			await caches.delete(key);
-		}
-	});
-	await cache.addAll(config.caches);
-	skipWaiting();
+	const old = keys.filter(k => k !== config.version);
+	await Promise.all(old.map(key => caches.delete(key)));
 
+	await cache.addAll(config.stale);
+	skipWaiting();
 });
 
 self.addEventListener('activate', event => {
 	event.waitUntil(async function() {
 		clients.claim();
-		const keys = await caches.keys();
-		keys.forEach(async key => {
-			if (key !== config.version) {
-				await caches.delete(key);
-			}
-		});
 	}());
 });
 
 self.addEventListener('fetch', async event => {
-	function isValid(req) {
-		try {
-			const url = new URL(req.url);
-			const isGet = req.method === 'GET';
-			const sameOrigin = url.origin === location.origin;
-			const isHome = ['/', '/index.html', '/index.php'].some(path => url.pathname === path);
-			const notIgnored = config.ignored.every(path => url.pathname !== path);
-			const allowedPath = config.paths.some(path => url.pathname.startsWith(path));
-
-			return isGet && sameOrigin && (isHome || (allowedPath && notIgnored));
-		} catch(err) {
-			console.error(err);
-			return false;
-		}
-	}
-
 	async function get(request) {
 		const cache = await caches.open(config.version);
 		const cached = await cache.match(request);
 
-		if (navigator.onLine) {
-			const fetched = fetch(request).then(async resp => {
-				if (resp instanceof Response) {
-					const respClone = await resp.clone();
-					await cache.put(event.request, respClone);
-				}
-				return resp;
-			});
-
-			if (cached instanceof Response) {
-				return cached;
-			} else {
-				const resp = await fetched;
-				return resp;
-			}
-		} else {
-			return cached;
-		}
+		return cached instanceof Response ? cached : fetch(request);
 	}
 
-	if (isValid(event.request)) {
+	if (event.request.method === 'GET' && config.stale.includes(event.request.url)) {
 		event.respondWith(get(event.request));
 	}
 });

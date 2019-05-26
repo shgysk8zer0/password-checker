@@ -1,7 +1,7 @@
 {
   "name": "Password Checker",
-  "short_name": "pwd-checker",
-  "version": "1.0.0",
+  "short_name": "Passwords",
+  "version": "1.0.1",
   "start_url": "/",
   "lang": "en",
   "description": "Checks passwords against have i been pwned",
