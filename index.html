@@ -53,7 +53,7 @@
 			<a href="#how-it-works">How it works</a>
 		</nav>
 		<main >
-			<form name="haveIBeenPwned" id="form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" autocomplete="off">
+			<form name="haveIBeenPwned" id="form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off">
 				<fieldset class="border-none">
 					<legend>
 						<span>Check your password on</span>
@@ -81,6 +81,7 @@
 					</button>
 				</div>
 			</form>
+			<section id="breaches" class="grid"></section>
 			<br />
 			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="">
 				<summary>
@@ -150,10 +151,23 @@
 				</span>
 			</div>
 		</footer>
-		<button type="button" is="share-button" class="round shadow fixed" text="Check if your passwords are secure" aria-label="Share">
+		<button type="button" is="share-button" class="round shadow fixed" text="Check if your passwords are secure" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share" />
 			</svg>
 		</button>
+		<template id="breach-template">
+			<div class="card shadow breach inline-block animation-speed-slow animation-ease-in slideInLeft">
+				<h4>
+					<!-- <img src="" crossorigin="anonymous" decoding="async" class="breach-logo" referrerpolicy="origin" /> -->
+					<a href="" class="breach-url" target="_blank" rel="external noopener">
+						<span class="breach-title"></span>
+						<span>on</span>
+						<time datetime="" class="breach-date"></time>
+					</a>
+				</h4>
+				<blockquote class="breach-description"></blockquote>
+		</div>
+		</template>
 	</body>
 </html>
