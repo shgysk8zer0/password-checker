@@ -26,6 +26,10 @@ ready().then(() => {
 		$('.found', tpl).text(event.detail.found);
 		$('.password-found', event.target).remove();
 		container.append(tpl);
+		container.parentElement.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		});
 	});
 
 	$('#password-form').reset(event => $('.password-found', event.target).remove());
@@ -77,6 +81,10 @@ ready().then(() => {
 			$(container.children).remove();
 
 			container.append(...items);
+			container.parentElement.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start',
+			});
 		}
 	});
 

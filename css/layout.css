@@ -3,6 +3,6 @@ body.grid {
 }
 
 #breaches {
-	grid-template-columns: repeat(auto-fill, 360px);
+	grid-template-columns: repeat(auto-fill, minmax(300px, 360px));
 	grid-gap: 0.7em;
 }
