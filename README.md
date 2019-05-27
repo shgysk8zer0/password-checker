@@ -1,4 +1,4 @@
-# [Password Checker](https://stupefied-franklin-e519bf.netlify.com/)
+# [Password Checker](https://passwords.netlify.com/)
 ![](img/favicon.svg)
 
 [![Build Status](https://travis-ci.org/shgysk8zer0/password-checker.svg?branch=master)](https://travis-ci.org/shgysk8zer0/password-checker)
@@ -13,7 +13,7 @@
 ![GitHub forks](https://img.shields.io/github/forks/shgysk8zer0/password-checker.svg?style=social)
 ![GitHub stars](https://img.shields.io/github/stars/shgysk8zer0/password-checker.svg?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/shgysk8zer0.svg?style=social)
-- - - 
+- - -
 
 - [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
 - [Contributing](./.github/CONTRIBUTING.md)

@@ -49,78 +49,109 @@
 	<body id="top" class="font-main background-primary color-default" contextmenu="nav-menu">
 		<menu type="context" id="nav-menu">
 			<menu label="Navigate">
-				<menuitem label="Check your password" icon="/img/adwaita-icons/status/dialog-password.svg" data-scroll-to="#password-form"></menuitem>
-				<menuitem label="Check your email address" icon="/img/octicons/mail.svg" data-scroll-to="#email-form"></menuitem>
+				<menuitem label="Check your password" icon="/img/adwaita-icons/status/dialog-password.svg" data-show-modal="#password-dialog"></menuitem>
+				<menuitem label="Check your email address" icon="/img/octicons/mail.svg" data-show-modal="#email-dialog"></menuitem>
 			</menu>
 		</menu>
 		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
-			<a href="#top">Try it out</a>
+			<a href="#top">
+				<svg class="current-color icon">
+					<use xlink:href="/img/icons.svg#icon-mono" />
+				</svg>
+			</a>
 			<span class="separator">|</span>
-			<a href="#how-it-works">How it works</a>
+			<span class="cursor-pointer" data-show-modal="#password-dialog">
+				<svg class="current-color icon">
+					<use xlink:href="/img/icons.svg#dialog-password" />
+				</svg>
+				<span class="mobile-hidden">Check your password</span>
+			</span>
+			<span class="separator">|</span>
+			<span data-show-modal="#email-dialog">
+				<svg class="current-color icon">
+					<use xlink:href="/img/icons.svg#mail" />
+				</svg>
+				<span class="mobile-hidden">Check your email address</span>
+			</span>
 		</nav>
-		<main >
-			<form is="have-i-been-pwned" mode="password" name="passwordForm" id="password-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
-				<fieldset class="border-none">
-					<legend>
-						<span>Check your password</span>
-					</legend>
-					<p>Check if your password is contained in any known password lists from website breaches.</p>
-					<label for="password" class="form-group" title="Enter password to check">
-						<svg class="current-color icon">
-							<use xlink:href="/img/icons.svg#dialog-password" />
-						</svg>
-						<input type="password" name="password" id="password" placeholder="********" required="" />
-					</label>
-				</fieldset>
-				<div>
-					<button type="submit" class="btn btn-accept" title="Check password">
-						<svg class="current-color icon">
-							<use xlink:href="/img/icons.svg#check" />
-						</svg>
-						<span class="mobile-hidden">Check Password</span>
-					</button>
-					<button type="reset" class="btn btn-reject" title="Clear form">
-						<svg class="current-color icon">
-							<use xlink:href="/img/icons.svg#x" />
-						</svg>
-						<span class="mobile-hidden">Clear form</span>
-					</button>
-					<hr />
-					<section id="password-found-results"></section>
+		<main itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement" itemscope="">
+			<article class="card content shadow" itemprop="mainEntity" itemtype="https://schema.org/Article" itemscope="">
+				<header>
+					<h2 itemprop="headline">Passwords: Why &amp;How</h2>
+					<div class="flex row">
+						<div class="inline-block card article-meta flex-grow clearfix" itemprop="author" itemtype="https://schema.org/Person" itemscope="">
+	          	<picture class="float-left" itemprop="image" itemtype="http://schema.org/ImageObject" itemscope="">
+								<img is="gravatar-img"
+									hash="314fe5e355732b0a15b18053d318cf37"
+									sizes="3vmax"
+									default-size="32"
+									src="https://secure.gravatar.com/avatar/314fe5e355732b0a15b18053d318cf37?s=32&amp;d=mm"
+									alt="Gravatar"
+									crossorigin="anonymous"
+									referrerpolicy="origin-when-cross-origin"
+									decoding="auto"
+									class="round"
+									itemprop="url" />
+							</picture>
+							<div class="inline-block float-left">
+								<b class="block center">Author</b>
+								<span itemprop="name">
+									<a href="https://shgysk8zer0.github.io" class="underline" itemprop="url" target="_blank" rel="noopener external">
+										<span itemprop="givenName" content="Christopher">Chris</span>
+										<meta itemprop="additionalName" content="Wayne" />
+										<span itemprop="familyName">Zuber</span>
+									</a>
+								</span>
+							</div>
+						</div>
+						<div class="inline-block card article-meta flex-grow clearfix">
+							<svg class="current-color float-left icon-3vmax">
+								<use xlink:href="/img/icons.svg#calendar" />
+							</svg>
+							<div class="inline-block float-left">
+								<b class="block center">Published</b>
+								<time itemprop="datePublished" datetime="2019-05-27">May 7, 2019</time>
+							</div>
+						</div>
+						<div class="inline-block card article-meta flex-grow clearfix">
+							<svg class="current-color float-left icon-3vmax">
+								<use xlink:href="/img/icons.svg#calendar" />
+							</svg>
+							<div class="inline-block float-left">
+								<b class="block center">Updated</b>
+								<time itemprop="dateModified" datetime="2019-05-27">May 7, 2019</time>
+							</div>
+						</div>
+					</div>
+          <meta itemprop="image" content="https://i.imgur.com/Ul9Ii2S.png" />
+          <div itemprop="publisher" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+          	<meta itemprop="name" content="KernValley.us" />
+              <div itemprop="logo" itemtype="https://schema.org/ImageObject" itemscope="" hidden="">
+              	<meta itemprop="url" content="https://kernvalley.us/img/icon-192.png" />
+              </div>
+              <meta itemprop="url" content="https://kernvalley.us" />
+          </div>
+				</header>
+				<nav class="sticky">
+					<a href="#sec-1">Lorem Ipsum</a>
+				</nav>
+				<div itemprop="articleBody">
+					<section id="sec-1">
+						<h3>Lorem Ipsum</h3>
+						<picture is="imgur-img" hash="c2jUYGe"></picture>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</section>
+					<section>
+						<h3>Lorem Ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</section>
+					<section>
+						<h3>Lorem Ipsum</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</section>
 				</div>
-			</form>
-			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" hidden="">
-				<fieldset class="border-none">
-					<legend>
-						<span>Check your email address</span>
-					</legend>
-					<p>See the list of hacked websites that included your email address</p>
-					<label for="email" class="form-group" title="Enter email to check">
-						<svg class="current-color icon">
-							<use xlink:href="/img/icons.svg#mail" />
-						</svg>
-						<input type="email" name="email" id="email" placeholder="user@example.com" autocomplete="email" required="" />
-					</label>
-				</fieldset>
-				<div>
-					<button type="submit" class="btn btn-accept" title="Check email">
-						<svg class="current-color icon">
-							<use xlink:href="/img/icons.svg#check" />
-						</svg>
-						<span class="mobile-hidden">Check Email</span>
-					</button>
-					<button type="reset" class="btn btn-reject" title="Clear form">
-						<svg class="current-color icon">
-							<use xlink:href="/img/icons.svg#x" />
-						</svg>
-						<span class="mobile-hidden">Clear form</span>
-					</button>
-				</div>
-				<hr />
-				<section id="breaches" class="grid"></section>
-			</form>
-			<br />
-			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="">
+			</article>
+			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="" hidden="">
 				<summary>
 					<h3 class="inline-block">How this works</h3>
 				</summary>
@@ -193,6 +224,70 @@
 				<use xlink:href="/img/icons.svg#public-share" />
 			</svg>
 		</button>
+		<dialog id="password-dialog">
+			<form is="have-i-been-pwned" mode="password" name="passwordForm" id="password-form" class="card shadow animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
+				<fieldset class="border-none">
+					<legend>
+						<span>Check your password</span>
+					</legend>
+					<p>Check if your password is contained in any known password lists from website breaches.</p>
+					<label for="password" class="form-group" title="Enter password to check">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#dialog-password" />
+						</svg>
+						<input type="password" name="password" id="password" placeholder="********" required="" />
+					</label>
+				</fieldset>
+				<div>
+					<button type="submit" class="btn btn-accept" title="Check password">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#check" />
+						</svg>
+						<span class="mobile-hidden">Check Password</span>
+					</button>
+					<button type="reset" class="btn btn-reject" title="Clear form" data-close="#password-dialog">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#x" />
+						</svg>
+						<span class="mobile-hidden">Clear form</span>
+					</button>
+					<hr />
+					<section id="password-found-results"></section>
+				</div>
+			</form>
+		</dialog>
+		<dialog id="email-dialog">
+			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" hidden="">
+				<fieldset class="border-none">
+					<legend>
+						<span>Check your email address</span>
+					</legend>
+					<p>See the list of hacked websites that included your email address</p>
+					<label for="email" class="form-group" title="Enter email to check">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#mail" />
+						</svg>
+						<input type="email" name="email" id="email" placeholder="user@example.com" autocomplete="email" required="" />
+					</label>
+				</fieldset>
+				<div>
+					<button type="submit" class="btn btn-accept" title="Check email">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#check" />
+						</svg>
+						<span class="mobile-hidden">Check Email</span>
+					</button>
+					<button type="reset" class="btn btn-reject" title="Clear form" data-close="#email-dialog">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#x" />
+						</svg>
+						<span class="mobile-hidden">Clear form</span>
+					</button>
+				</div>
+				<hr />
+				<section id="breaches" class="grid"></section>
+			</form>
+		</dialog>
 		<template id="breach-template">
 			<div class="card shadow breach inline-block animation-speed-slow animation-ease-in slideInLeft">
 				<h4>
@@ -212,7 +307,7 @@
 					<p>Affected accounts: <var class="breach-count"></var></p>
 					<blockquote class="breach-description"></blockquote>
 				</details>
-		</div>
+			</div>
 		</template>
 		<template id="password-found-template">
 			<div class="password-found">

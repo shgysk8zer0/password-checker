@@ -44,6 +44,35 @@ legend {
 	background: var(--contrast-color);
 }
 
+#email-dialog, #password-dialog {
+	max-width: 95%;
+	max-height: 90vh;
+	height: auto;
+	overflow: auto;
+}
+
+#email-dialog {
+	width: auto;
+}
+
+.no-margins {
+	margin: 0;
+}
+
+.flex > .flex-grow {
+	flex-grow: 1;
+}
+
+.icon-3vw {
+	height: 3vw;
+	width: 3vw;
+}
+
+.icon-3vmax {
+	height: 3vmax;
+	width: 3vmax;
+}
+
 .social-links {
 	font-size: 1.3rem;
 }
@@ -109,6 +138,10 @@ a.breach-url[href="#"] .breach-title {
 
 a.breach-url[href="#"] .icon {
 	display: none;
+}
+
+article p:first-letter {
+	margin-left: 2em;
 }
 
 @media (max-width: 800px) {

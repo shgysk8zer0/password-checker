@@ -1,7 +1,7 @@
 'use strict';
-// 2019-05-26 09:30
+// 2019-05-27 11:32
 const config = {
-	version: '1.0.2',
+	version: location.hostname === 'localhost' ? new Date().toISOString() : '1.0.3',
 	stale: [
 		'/',
 		'/js/index.js',
@@ -15,6 +15,8 @@ const config = {
 		'/js/share-button.js',
 		'/js/share-config.js',
 		'/js/have-i-been-pwned-form.js',
+		'/js/gravatar-img.js',
+		'/js/imgur-img.js',
 		'/js/std-js/functions.js',
 		'/css/vars.css',
 		'/css/normalize.css/normalize.css',

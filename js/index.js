@@ -3,6 +3,8 @@ import './std-js/shims.js';
 import './share-button.js';
 import {$, ready, registerServiceWorker} from './std-js/functions.js';
 import './have-i-been-pwned-form.js';
+import './imgur-img.js';
+import './gravatar-img.js';
 
 if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
 	registerServiceWorker(document.documentElement.dataset.serviceWorker).catch(console.error);
@@ -18,6 +20,20 @@ ready().then(() => {
 			bahavior: 'smooth',
 			block: 'start',
 		});
+	});
+
+	$('[data-show-modal]').click(event => {
+		const target = document.querySelector(event.target.closest('[data-show-modal]').dataset.showModal);
+		if (target instanceof HTMLElement) {
+			target.showModal();
+		}
+	});
+
+	$('[data-close]').click(event => {
+		const target = document.querySelector(event.target.closest('[data-close]').dataset.close);
+		if (target instanceof HTMLElement) {
+			target.close();
+		}
 	});
 
 	$('#password-form').on('foundpassword', async event => {

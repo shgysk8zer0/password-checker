@@ -1,23 +1,21 @@
 # Security Policy
 
 ## Content Security Policy
-> 
 
 > **Content Security Policy** (CSP) is an added layer of security that helps to detect
 and mitigate certain types of attacks, including Cross Site Scripting (XSS) and
-data injection attacks. These attacks are used for everything from data theft 
+data injection attacks. These attacks are used for everything from data theft
 to site defacement to distribution of malware.
 
 The production site uses a [CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
 header to limit what resources are allowed to be loaded into the browser. This
 allows:
 
-- **Scripts**: Javascript is only permitted to be run from the originating server,
+- **Scripts**: JavaScript is only permitted to be run from the originating server,
 and inline scripts and the use of `eval` are prohibited.
-- **XHR / `fetch`**: In addition to the originating server, requsts are permitted
+- **XHR / `fetch`**: In addition to the originating server, requests are permitted
 to `https://api.pwnedpasswords.com`. The first 5 characters of the password's SHA-1
-hash are submitted to this endpoint.
-- **Images**: In addition to the originating server, images are allowed from `https://cdn.kernvalley.us`.
+hash are submitted to this endpoint. Email addresses are sent to `https://haveibeenpwned.com/api/v2/`.
 - **Other**: All other requests are limited to the originating server. No external
 resources are permitted.
 - No browser plugins (*Flash / Java*) are allowed.
