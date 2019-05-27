@@ -102,6 +102,7 @@ a.breach-url[href="#"] {
 	pointer-events: none;
 	cursor: default;
 }
+
 a.breach-url[href="#"] .breach-title {
 	text-decoration: none;
 }
