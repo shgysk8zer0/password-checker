@@ -21,10 +21,10 @@
     Content-Security-Policy = '''
       default-src 'self';
       base-uri 'self';
-      img-src 'self' https://cdn.kernvalley.us;
+      img-src 'self' https://cdn.kernvalley.us https://haveibeenpwned.com/Content/Images/PwnedLogos/;
       script-src 'self';
       style-src 'self';
-      connect-src 'self' https://api.pwnedpasswords.com;
+      connect-src 'self' https://api.pwnedpasswords.com https://haveibeenpwned.com/api/v2/;
       worker-src: 'self';
       font-src 'self';
       media-src 'none';

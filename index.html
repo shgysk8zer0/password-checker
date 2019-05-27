@@ -46,19 +46,25 @@
 		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
 		<link rel="stylesheet" href="/css/index.css" media="all" />
 	</head>
-	<body id="top" class="font-main background-primary color-default">
+	<body id="top" class="font-main background-primary color-default" contextmenu="nav-menu">
+		<menu type="context" id="nav-menu">
+			<menu label="Navigate">
+				<menuitem label="Check your password" icon="/img/adwaita-icons/status/dialog-password.svg" data-scroll-to="#password-form"></menuitem>
+				<menuitem label="Check your email address" icon="/img/octicons/mail.svg" data-scroll-to="#email-form"></menuitem>
+			</menu>
+		</menu>
 		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
 			<a href="#top">Try it out</a>
 			<span class="separator">|</span>
 			<a href="#how-it-works">How it works</a>
 		</nav>
 		<main >
-			<form name="haveIBeenPwned" id="form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" autocomplete="off">
+			<form is="have-i-been-pwned" mode="password" name="passwordForm" id="password-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
 				<fieldset class="border-none">
 					<legend>
-						<span>Check your password on</span>
-						<a href="https://haveibeenpwned.com/" rel="external noopener">Have I Been Pwned</a>
+						<span>Check your password</span>
 					</legend>
+					<p>Check if your password is contained in any known password lists from website breaches.</p>
 					<label for="password" class="form-group" title="Enter password to check">
 						<svg class="current-color icon">
 							<use xlink:href="/img/icons.svg#dialog-password" />
@@ -79,7 +85,39 @@
 						</svg>
 						<span class="mobile-hidden">Clear form</span>
 					</button>
+					<hr />
+					<section id="password-found-results"></section>
 				</div>
+			</form>
+			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" hidden="">
+				<fieldset class="border-none">
+					<legend>
+						<span>Check your email address</span>
+					</legend>
+					<p>See the list of hacked websites that included your email address</p>
+					<label for="email" class="form-group" title="Enter email to check">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#mail" />
+						</svg>
+						<input type="email" name="email" id="email" placeholder="user@example.com" autocomplete="email" required="" />
+					</label>
+				</fieldset>
+				<div>
+					<button type="submit" class="btn btn-accept" title="Check email">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#check" />
+						</svg>
+						<span class="mobile-hidden">Check Email</span>
+					</button>
+					<button type="reset" class="btn btn-reject" title="Clear form">
+						<svg class="current-color icon">
+							<use xlink:href="/img/icons.svg#x" />
+						</svg>
+						<span class="mobile-hidden">Clear form</span>
+					</button>
+				</div>
+				<hr />
+				<section id="breaches" class="grid"></section>
 			</form>
 			<br />
 			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="">
@@ -150,10 +188,36 @@
 				</span>
 			</div>
 		</footer>
-		<button type="button" is="share-button" class="round shadow fixed" text="Check if your passwords are secure" aria-label="Share">
+		<button type="button" is="share-button" class="round shadow fixed" text="Check if your passwords are secure" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share" />
 			</svg>
 		</button>
+		<template id="breach-template">
+			<div class="card shadow breach inline-block animation-speed-slow animation-ease-in slideInLeft">
+				<h4>
+					<!-- <img src="" crossorigin="anonymous" decoding="async" class="breach-logo" referrerpolicy="origin" /> -->
+					<a href="#" class="breach-url" target="_blank" rel="external noopener">
+						<span class="breach-title color-link underline"></span>
+						<svg viewBox="0 0 12 16" class="current-color icon">
+							<path fill-rule="evenodd" d="M11 10h1v3c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h3v1H1v10h10v-3zM6 2l2.25 2.25L5 7.5 6.5 9l3.25-3.25L12 8V2H6z"/>
+						</svg>
+					</a>
+					<span>on</span>
+					<time datetime="" class="breach-date"></time>
+				</h4>
+				<div class="breach-includes"></div>
+				<details>
+					<summary>Details</summary>
+					<p>Affected accounts: <var class="breach-count"></var></p>
+					<blockquote class="breach-description"></blockquote>
+				</details>
+		</div>
+		</template>
+		<template id="password-found-template">
+			<div class="password-found">
+				<p>Your password was found <b class="found"></b> times.</p>
+			</div>
+		</template>
 	</body>
 </html>

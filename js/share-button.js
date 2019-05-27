@@ -6,7 +6,7 @@ import {
 	reddit,
 	gmail,
 	email,
-} from './std-js/share-config.js';
+} from './share-config.js';
 
 webShareApi(facebook, twitter, linkedIn, reddit, gmail, email);
 
