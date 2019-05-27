@@ -64,6 +64,7 @@
 					<legend>
 						<span>Check your password</span>
 					</legend>
+					<p>Check if your password is contained in any known password lists from website breaches.</p>
 					<label for="password" class="form-group" title="Enter password to check">
 						<svg class="current-color icon">
 							<use xlink:href="/img/icons.svg#dialog-password" />
@@ -84,19 +85,21 @@
 						</svg>
 						<span class="mobile-hidden">Clear form</span>
 					</button>
+					<hr />
 					<section id="password-found-results"></section>
 				</div>
 			</form>
-			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
+			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow content animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" hidden="">
 				<fieldset class="border-none">
 					<legend>
 						<span>Check your email address</span>
 					</legend>
+					<p>See the list of hacked websites that included your email address</p>
 					<label for="email" class="form-group" title="Enter email to check">
 						<svg class="current-color icon">
 							<use xlink:href="/img/icons.svg#mail" />
 						</svg>
-						<input type="email" name="email" id="email" placeholder="user@example.com" required="" />
+						<input type="email" name="email" id="email" placeholder="user@example.com" autocomplete="email" required="" />
 					</label>
 				</fieldset>
 				<div>
@@ -113,6 +116,7 @@
 						<span class="mobile-hidden">Clear form</span>
 					</button>
 				</div>
+				<hr />
 				<section id="breaches" class="grid"></section>
 			</form>
 			<br />
@@ -193,13 +197,21 @@
 			<div class="card shadow breach inline-block animation-speed-slow animation-ease-in slideInLeft">
 				<h4>
 					<!-- <img src="" crossorigin="anonymous" decoding="async" class="breach-logo" referrerpolicy="origin" /> -->
-					<a href="" class="breach-url" target="_blank" rel="external noopener">
-						<span class="breach-title"></span>
-						<span>on</span>
-						<time datetime="" class="breach-date"></time>
+					<a href="#" class="breach-url" target="_blank" rel="external noopener">
+						<span class="breach-title color-link underline"></span>
+						<svg viewBox="0 0 12 16" class="current-color icon">
+							<path fill-rule="evenodd" d="M11 10h1v3c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h3v1H1v10h10v-3zM6 2l2.25 2.25L5 7.5 6.5 9l3.25-3.25L12 8V2H6z"/>
+						</svg>
 					</a>
+					<span>on</span>
+					<time datetime="" class="breach-date"></time>
 				</h4>
-				<blockquote class="breach-description"></blockquote>
+				<div class="breach-includes"></div>
+				<details>
+					<summary>Details</summary>
+					<p>Affected accounts: <var class="breach-count"></var></p>
+					<blockquote class="breach-description"></blockquote>
+				</details>
 		</div>
 		</template>
 		<template id="password-found-template">

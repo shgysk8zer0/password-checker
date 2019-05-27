@@ -19,36 +19,66 @@ ready().then(() => {
 			block: 'start',
 		});
 	});
+
 	$('#password-form').on('foundpassword', async event => {
 		const tpl = document.getElementById('password-found-template').content.cloneNode(true);
 		const container = document.getElementById('password-found-results');
 		$('.found', tpl).text(event.detail.found);
-		$('#password-form .password-found').remove();
+		$('.password-found', event.target).remove();
 		container.append(tpl);
 	});
 
-	$('#password-form').reset(() => $('#password-form .password-found').remove());
+	$('#password-form').reset(event => $('.password-found', event.target).remove());
 
 	$('#email-form').on('foundbreaches', async event => {
 		const tpl = document.getElementById('breach-template').content;
 		const container = document.getElementById('breaches');
-		console.log(event.detail.found);
-		const items = event.detail.found.map(breach => {
-			const el = tpl.cloneNode(true);
-			const date = new Date(breach.BreachDate);
-			$('.breach-title', el).text(breach.Title);
-			$('.breach-url', el).attr({href: `https://${breach.Domain}`});
-			// $('.breach-logo', el).attr({src: breach.LogoPath});
-			$('.breach-description', el).html(breach.Description);
-			$('.breach-date', el).text(date.toLocaleDateString());
-			$('.breach-date', el).attr({datetime: date.toISOString()});
-			return el;
-		});
 
-		[...container.children].forEach(child => child.remove());
+		if (event.detail.found.length === 0) {
+			$(container.children).remove();
+			const msg = document.createElement('p');
+			msg.classList.add('msg');
+			msg.textContent = 'That email address was not found in any breaches.';
+			container.append(msg);
+		} else {
+			const items = event.detail.found.map(breach => {
+				const classes = [
+					'Verified',
+					'Fabricated',
+					'Sensitive',
+					'Retired',
+					'Spamlist',
+				]
+					.filter(cl => breach[`Is${cl}`] === true)
+					.map(cl => `is-${cl.toLowerCase()}`);
+				const el = tpl.cloneNode(true);
+				$('.breach', el).addClass(...classes);
+				const items = breach.DataClasses.map(item => {
+					const span = document.createElement('span');
+					span.textContent = item;
+					span.classList.add('breach-tag');
+					return span;
+				});
 
-		container.append(...items);
+				const date = new Date(breach.BreachDate);
+				if (breach.Domain !== '') {
+					$('.breach-url', el).attr({href: `https://${breach.Domain}`});
+				}
+				$('.breach-title', el).text(breach.Title);
+				// $('.breach-logo', el).attr({src: breach.LogoPath});
+				$('.breach-description', el).html(breach.Description);
+				$('.breach-date', el).text(date.toLocaleDateString());
+				$('.breach-count', el).text(breach.PwnCount);
+				$('.breach-date', el).attr({datetime: date.toISOString()});
+				$('.breach-includes', el).append(...items);
+				return el;
+			});
+
+			$(container.children).remove();
+
+			container.append(...items);
+		}
 	});
 
-	$('#email-form').reset(() => $('#email-form .breach').remove());
+	$('#email-form').reset(event => $('.breach, .msg', event.target).remove());
 });
