@@ -1,8 +1,95 @@
-body.grid {
+@import url("./header.css");
+@import url("./nav.css");
+@import url("./sidebar.css");
+@import url("./main.css");
+@import url("./footer.css");
 
+body.grid {
+	grid-template-areas: 'nav nav nav' '. main .' 'footer footer footer';
+	grid-template-rows: var(--nav-height) 1fr auto;
+	grid-template-columns: 1vw 98vw 1vw;
+	grid-column-gap: 1.5rem;
 }
 
 #breaches {
 	grid-template-columns: repeat(auto-fill, minmax(300px, 360px));
 	grid-gap: 0.7em;
+}
+
+.content {
+	margin: 1.2em;
+	padding: 0.4em 1.4em;
+}
+
+a {
+	color: inherit;
+}
+
+fieldset {
+	padding: 2.3em;
+}
+
+legend {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+#email-dialog, #password-dialog {
+	max-width: 95%;
+	max-height: 90vh;
+	height: auto;
+	overflow: auto;
+}
+
+#email-dialog {
+	width: auto;
+}
+
+.no-margins {
+	margin: 0;
+}
+
+.flex > .flex-grow {
+	flex-grow: 1;
+}
+
+.icon-3vw {
+	height: 3vw;
+	width: 3vw;
+}
+
+.icon-3vmax {
+	height: 3vmax;
+	width: 3vmax;
+}
+
+.form-group {
+	border: 2px solid #b6b6b3;
+	border-radius: 6px;
+	padding: 2px;
+}
+
+.form-group > input {
+	border: none;
+	max-width: 80%;
+}
+
+button[is="share-button"] {
+	bottom: 1rem;
+	right: 1rem;
+	border-radius: 50%;
+	padding: 0.8rem;
+	font-size: 1.5rem;
+}
+
+@media (max-width: 800px) {
+	.mobile-hidden {
+		display: none;
+	}
+}
+
+@media(min-width: 1200px) {
+	body.grid {
+		grid-template-columns: 1fr 1000px 1fr;
+	}
 }

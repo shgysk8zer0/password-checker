@@ -46,13 +46,14 @@
 		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
 		<link rel="stylesheet" href="/css/index.css" media="all" />
 	</head>
-	<body id="top" class="font-main background-primary color-default" contextmenu="nav-menu">
+	<body id="top" class="grid font-main background-primary color-default" contextmenu="nav-menu">
 		<menu type="context" id="nav-menu">
 			<menu label="Navigate">
 				<menuitem label="Check your password" icon="/img/adwaita-icons/status/dialog-password.svg" data-show-modal="#password-dialog"></menuitem>
 				<menuitem label="Check your email address" icon="/img/octicons/mail.svg" data-show-modal="#email-dialog"></menuitem>
 			</menu>
 		</menu>
+		<header id="header" hidden=""></header>
 		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
 			<a href="#top">
 				<svg class="current-color icon">
@@ -74,10 +75,11 @@
 				<span class="mobile-hidden">Check your email address</span>
 			</span>
 		</nav>
+		<aside id="sidebar" hidden=""></aside>
 		<main itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement" itemscope="">
 			<article class="card content shadow" itemprop="mainEntity" itemtype="https://schema.org/Article" itemscope="">
 				<header>
-					<h2 itemprop="headline">Passwords: Why &amp;How</h2>
+					<h2 itemprop="headline">Passwords: Why &amp; How</h2>
 					<div class="flex row">
 						<div class="inline-block card article-meta flex-grow clearfix" itemprop="author" itemtype="https://schema.org/Person" itemscope="">
 	          	<picture class="float-left" itemprop="image" itemtype="http://schema.org/ImageObject" itemscope="">
@@ -219,13 +221,13 @@
 				</span>
 			</div>
 		</footer>
-		<button type="button" is="share-button" class="round shadow fixed" text="Check if your passwords are secure" aria-label="Share" hidden="">
+		<button type="button" is="share-button" class="round shadow fixed z-4" text="Check if your passwords are secure" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share" />
 			</svg>
 		</button>
-		<dialog id="password-dialog">
-			<form is="have-i-been-pwned" mode="password" name="passwordForm" id="password-form" class="card shadow animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" autocomplete="off" hidden="">
+		<dialog id="password-dialog" class="animation-speed-normal animation-ease-in-out slideInUp">
+			<form is="have-i-been-pwned" mode="password" name="passwordForm" id="password-form" method="POST" action="" autocomplete="off" hidden="">
 				<fieldset class="border-none">
 					<legend>
 						<span>Check your password</span>
@@ -256,8 +258,8 @@
 				</div>
 			</form>
 		</dialog>
-		<dialog id="email-dialog">
-			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" class="card shadow animation-speed-normal animation-ease-in fadeInRight" method="POST" action="" hidden="">
+		<dialog id="email-dialog" class="animation-speed-normal animation-ease-in-out fadeInUp">
+			<form is="have-i-been-pwned" mode="email" name="accountForm" id="email-form" method="POST" action="" hidden="">
 				<fieldset class="border-none">
 					<legend>
 						<span>Check your email address</span>

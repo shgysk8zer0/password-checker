@@ -35,6 +35,6 @@
 	--dialog-border: none;
 
 	--nav-height: 2.7rem;
-	--header-height: 30vh;
+	--header-height: 0;
 	--footer-height: auto;
 }
