@@ -55,20 +55,20 @@
 		</menu>
 		<header id="header" hidden="" itemtype="https://schema.org/WPHeader" itemscope=""></header>
 		<nav id="nav" class="sticky top shadow background-accent color-alt z-4 flex row no-wrap" itemtype="https://schema.org/SiteNavigationElement" itemscope="">
-			<a href="#top">
+			<a href="#top" data-flex-grow="0">
 				<svg class="current-color icon">
 					<use xlink:href="/img/icons.svg#icon-mono" />
 				</svg>
 			</a>
 			<span class="separator">|</span>
-			<span class="cursor-pointer" data-show-modal="#password-dialog">
+			<span class="cursor-pointer center" data-show-modal="#password-dialog" data-flex-grow="1">
 				<svg class="current-color icon">
 					<use xlink:href="/img/icons.svg#dialog-password" />
 				</svg>
 				<span class="mobile-hidden">Check your password</span>
 			</span>
 			<span class="separator">|</span>
-			<span data-show-modal="#email-dialog">
+			<span class="center cursor-pointer" data-show-modal="#email-dialog" data-flex-grow="1">
 				<svg class="current-color icon">
 					<use xlink:href="/img/icons.svg#mail" />
 				</svg>
@@ -80,8 +80,8 @@
 			<article class="card content shadow" itemprop="mainEntity" itemtype="https://schema.org/Article" itemscope="">
 				<header class="background-accent color-alt">
 					<h2 class="center" itemprop="headline">Passwords: Why &amp; How</h2>
-					<div class="flex row color-default">
-						<div class="inline-block card article-meta flex-grow clearfix" itemprop="author" itemtype="https://schema.org/Person" itemscope="">
+					<div class="flex row no-wrap overflow-x-auto color-default">
+						<div class="inline-block card article-meta clearfix" data-flex-grow="1" data-flex-shrink="0" itemprop="author" itemtype="https://schema.org/Person" itemscope="">
 							<picture class="float-left" itemprop="image" itemtype="http://schema.org/ImageObject" itemscope="">
 								<img is="gravatar-img"
 									hash="314fe5e355732b0a15b18053d318cf37"
@@ -106,22 +106,22 @@
 								</span>
 							</div>
 						</div>
-						<div class="inline-block card article-meta flex-grow clearfix">
+						<div class="inline-block card article-meta clearfix" data-flex-grow="1" data-flex-shrink="0">
 							<svg class="current-color float-left icon-3vmax">
 								<use xlink:href="/img/icons.svg#calendar" />
 							</svg>
 							<div class="inline-block float-left">
 								<b class="block center">Published</b>
-								<time itemprop="datePublished" datetime="2019-05-27">May 7, 2019</time>
+								<time itemprop="datePublished" datetime="2019-05-27">May 27, 2019</time>
 							</div>
 						</div>
-						<div class="inline-block card article-meta flex-grow clearfix">
+						<div class="inline-block card article-meta clearfix" data-flex-grow="1" data-flex-shrink="0">
 							<svg class="current-color float-left icon-3vmax">
 								<use xlink:href="/img/icons.svg#calendar" />
 							</svg>
 							<div class="inline-block float-left">
 								<b class="block center">Updated</b>
-								<time itemprop="dateModified" datetime="2019-05-27">May 7, 2019</time>
+								<time itemprop="dateModified" datetime="2019-05-27">May 28, 2019</time>
 							</div>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 						<meta itemprop="url" content="https://kernvalley.us" />
 					</div>
 				</header>
-				<nav class="sticky">
+				<nav class="sticky card shadow">
 					<a href="#sec-1">Lorem Ipsum</a>
 				</nav>
 				<div itemprop="articleBody">
@@ -152,6 +152,13 @@
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</section>
 				</div>
+				<footer>
+					<a itemprop="license" rel="license external noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+							<img alt="Creative Commons License" src="/img/logos/creative-commons-by-sa.svg" />
+					</a>
+					<br />
+					<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Passwords</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://shgysk8zer0.github.io" property="cc:attributionName" rel="cc:attributionURL noopener external">Chris Zuber</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+				</footer>
 			</article>
 			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="" hidden="">
 				<summary>

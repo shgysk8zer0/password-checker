@@ -21,8 +21,8 @@ body.grid {
 	padding: 0.4em 1.4em;
 }
 
-a {
-	color: inherit;
+.overflow-x-auto {
+	overflow-x: auto;
 }
 
 fieldset {
@@ -47,10 +47,6 @@ legend {
 
 .no-margins {
 	margin: 0;
-}
-
-.flex > .flex-grow {
-	flex-grow: 1;
 }
 
 .icon-3vw {
@@ -92,4 +88,48 @@ button[is="share-button"] {
 	body.grid {
 		grid-template-columns: 1fr 1000px 1fr;
 	}
+}
+
+article nav.sticky {
+	top: var(--nav-height);
+}
+
+[data-flex-grow="0"] {
+	flex-grow: 0;
+}
+
+[data-flex-grow="1"] {
+	flex-grow: 1;
+}
+
+[data-flex-grow="2"] {
+	flex-grow: 2;
+}
+
+[data-flex-grow="3"] {
+	flex-grow: 3;
+}
+
+[data-flex-grow="4"] {
+	flex-grow: 4;
+}
+
+[data-flex-shrink="0"] {
+	flex-shrink: 0;
+}
+
+[data-flex-shrink="1"] {
+	flex-shrink: 1;
+}
+
+[data-flex-shrink="2"] {
+	flex-shrink: 2;
+}
+
+[data-flex-shrink="3"] {
+	flex-shrink: 3;
+}
+
+[data-flex-shrink="4"] {
+	flex-shrink: 4;
 }

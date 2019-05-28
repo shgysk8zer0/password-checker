@@ -9,6 +9,7 @@ const config = {
 		'/img/icons.svg',
 		'/img/apple-touch-icon.png',
 		'/img/favicon.svg',
+		'/img/logos/creative-common-by-sa.svg',
 		'/img/octicons/mail.svg',
 		'/js/std-js/deprefixer.js',
 		'/js/std-js/shims.js',
