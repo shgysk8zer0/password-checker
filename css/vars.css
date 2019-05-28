@@ -12,7 +12,7 @@
 	--tablet-rem: 1.6vmax;
 	--mobile-rem: 20px;
 
-	--button-background: #1b5fcb;
+	--button-background: var(--accent-color);
 	--button-color: var(--alt-color);
 	--button-border: none;
 	--button-border-radius: 0.15rem;

@@ -53,8 +53,8 @@
 				<menuitem label="Check your email address" icon="/img/octicons/mail.svg" data-show-modal="#email-dialog"></menuitem>
 			</menu>
 		</menu>
-		<header id="header" hidden=""></header>
-		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
+		<header id="header" hidden="" itemtype="https://schema.org/WPHeader" itemscope=""></header>
+		<nav id="nav" class="sticky top shadow background-accent color-alt z-4 flex row no-wrap" itemtype="https://schema.org/SiteNavigationElement" itemscope="">
 			<a href="#top">
 				<svg class="current-color icon">
 					<use xlink:href="/img/icons.svg#icon-mono" />
@@ -75,14 +75,14 @@
 				<span class="mobile-hidden">Check your email address</span>
 			</span>
 		</nav>
-		<aside id="sidebar" hidden=""></aside>
+		<aside id="sidebar" itemtype="https://schema.org/WPSideBar" itemscope="" hidden=""></aside>
 		<main itemprop="mainContentOfPage" itemtype="https://schema.org/WebPageElement" itemscope="">
 			<article class="card content shadow" itemprop="mainEntity" itemtype="https://schema.org/Article" itemscope="">
-				<header>
-					<h2 itemprop="headline">Passwords: Why &amp; How</h2>
-					<div class="flex row">
+				<header class="background-accent color-alt">
+					<h2 class="center" itemprop="headline">Passwords: Why &amp; How</h2>
+					<div class="flex row color-default">
 						<div class="inline-block card article-meta flex-grow clearfix" itemprop="author" itemtype="https://schema.org/Person" itemscope="">
-	          	<picture class="float-left" itemprop="image" itemtype="http://schema.org/ImageObject" itemscope="">
+							<picture class="float-left" itemprop="image" itemtype="http://schema.org/ImageObject" itemscope="">
 								<img is="gravatar-img"
 									hash="314fe5e355732b0a15b18053d318cf37"
 									sizes="3vmax"
@@ -125,14 +125,14 @@
 							</div>
 						</div>
 					</div>
-          <meta itemprop="image" content="https://i.imgur.com/Ul9Ii2S.png" />
-          <div itemprop="publisher" itemtype="https://schema.org/Organization" itemscope="" hidden="">
-          	<meta itemprop="name" content="KernValley.us" />
-              <div itemprop="logo" itemtype="https://schema.org/ImageObject" itemscope="" hidden="">
-              	<meta itemprop="url" content="https://kernvalley.us/img/icon-192.png" />
-              </div>
-              <meta itemprop="url" content="https://kernvalley.us" />
-          </div>
+					<meta itemprop="image" content="https://i.imgur.com/Ul9Ii2S.png" />
+					<div itemprop="publisher" itemtype="https://schema.org/Organization" itemscope="" hidden="">
+						<meta itemprop="name" content="KernValley.us" />
+						<div itemprop="logo" itemtype="https://schema.org/ImageObject" itemscope="" hidden="">
+							<meta itemprop="url" content="https://kernvalley.us/img/icon-192.png" />
+						</div>
+						<meta itemprop="url" content="https://kernvalley.us" />
+					</div>
 				</header>
 				<nav class="sticky">
 					<a href="#sec-1">Lorem Ipsum</a>
@@ -164,7 +164,7 @@
 				</div>
 			</details>
 		</main>
-		<footer id="footer" class="background-contrast color-alt">
+		<footer id="footer" class="background-contrast color-alt" itemtype="https://schema.org/WPFooter" itemscope="">
 			<h4 class="center">Made using the <a href="https://haveibeenpwned.com/API/v2#PwnedPasswords">Have I Been Pwned API</a>.</h4>
 			<br />
 			<div class="social-links cols-2">
