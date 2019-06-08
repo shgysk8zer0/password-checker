@@ -134,7 +134,7 @@
 						<meta itemprop="url" content="https://kernvalley.us" />
 					</div>
 				</header>
-				<nav class="sticky card shadow">
+				<nav class="sticky card">
 					<a href="#sec-1">Lorem Ipsum</a>
 				</nav>
 				<div itemprop="articleBody">
@@ -154,22 +154,12 @@
 				</div>
 				<footer>
 					<a itemprop="license" rel="license external noopener" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-							<img alt="Creative Commons License" src="/img/logos/creative-commons-by-sa.svg" />
+						<img alt="Creative Commons License" src="/img/logos/creative-commons-by-sa.svg" />
 					</a>
 					<br />
 					<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Passwords</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://shgysk8zer0.github.io" property="cc:attributionName" rel="cc:attributionURL noopener external">Chris Zuber</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 				</footer>
 			</article>
-			<details id="how-it-works" class="desc card shadow content animation-speed-normal animation-ease-in fadeInRight" open="" hidden="">
-				<summary>
-					<h3 class="inline-block">How this works</h3>
-				</summary>
-				<div>
-					<p>The first thing you should know is that no external code runs here, and that your passwords <em>(including their full hashes)</em> are never transmitted.</p>
-					<p>Instead, when you hit submit, a SHA-1 hash of your password is created in your browser, and the first 6 characters of that hash are sent to the Have I Been Pwned API. The response contains a list of hashes that begin with the same 6 characters along with how many times that password has been found in data breaches.</p>
-					<p>JavaScript in your browser then filters through the matching hashes to see if any of them match the full hash of your password and notifies you of how many times that was found.</p>
-				</div>
-			</details>
 		</main>
 		<footer id="footer" class="background-contrast color-alt" itemtype="https://schema.org/WPFooter" itemscope="">
 			<h4 class="center">Made using the <a href="https://haveibeenpwned.com/API/v2#PwnedPasswords">Have I Been Pwned API</a>.</h4>
@@ -294,7 +284,10 @@
 					</button>
 				</div>
 				<hr />
-				<section id="breaches" class="grid"></section>
+				<details id="email-details">
+					<summary class="sticky top card shadow z-1">Results</summary>
+					<section id="breaches" class="grid"></section>
+				</details>
 			</form>
 		</dialog>
 		<template id="breach-template">

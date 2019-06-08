@@ -1,0 +1,74 @@
+import {$} from './std-js/functions.js';
+
+export async function foundPassword(event) {
+	const tpl = document.getElementById('password-found-template').content.cloneNode(true);
+	const container = document.getElementById('password-found-results');
+
+	$('.found', tpl).text(event.detail.found);
+	$('.password-found', event.target).remove();
+	container.append(tpl);
+	container.parentElement.scrollIntoView({
+		behavior: 'smooth',
+		block: 'start',
+	});
+}
+
+export async function foundBreaches(event) {
+	const tpl = document.getElementById('breach-template').content;
+	const container = document.getElementById('breaches');
+
+	if (event.detail.found.length === 0) {
+		$(container.children).remove();
+		const msg = document.createElement('p');
+		msg.classList.add('msg');
+		msg.textContent = 'That email address was not found in any breaches.';
+		container.append(msg);
+	} else {
+		const items = event.detail.found.map(breach => {
+			const classes = [
+				'Verified',
+				'Fabricated',
+				'Sensitive',
+				'Retired',
+				'Spamlist',
+			].filter(cl => breach[`Is${cl}`] === true)
+				.map(cl => `is-${cl.toLowerCase()}`);
+
+			const el = tpl.cloneNode(true);
+			$('.breach', el).addClass(...classes);
+
+			const items = breach.DataClasses.map(item => {
+				const span = document.createElement('span');
+				span.textContent = item;
+				span.classList.add('breach-tag');
+				return span;
+			});
+
+			const date = new Date(breach.BreachDate);
+			if (breach.Domain !== '') {
+				$('.breach-url', el).attr({href: `https://${breach.Domain}`});
+			}
+			$('.breach-title', el).text(breach.Title);
+			// $('.breach-logo', el).attr({src: breach.LogoPath});
+			$('.breach-description', el).html(breach.Description);
+			$('.breach-date', el).text(date.toLocaleDateString());
+			$('.breach-count', el).text(breach.PwnCount);
+			$('.breach-date', el).attr({datetime: date.toISOString()});
+			$('.breach-includes', el).append(...items);
+			document.getElementById('email-details').open = true;
+			return el;
+		});
+
+		$(container.children).remove();
+
+		container.append(...items);
+		container.parentElement.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start',
+		});
+	}
+}
+
+export async function reset(event) {
+	$('.breach, .msg, .password-found', event.target).remove();
+}
