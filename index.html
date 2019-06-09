@@ -269,6 +269,141 @@
 						<input type="email" name="email" id="email" placeholder="user@example.com" autocomplete="email" required="" />
 					</label>
 				</fieldset>
+				<details id="email-filters">
+					<summary>Filter</summary>
+					<div class="flex row wrap">
+						<input type="checkbox" id="filter-passwords" value="Passwords" hidden="" name="filter[Passwords]" />
+						<label for="filter-passwords" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#dialog-password" />
+							</svg>
+							<span class="filter-label mobile-hidden">Passwords</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-cc" value="Credit cards" hidden="" name="filter[CC]" />
+						<label for="filter-cc" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#credit-card" />
+							</svg>
+							<span class="filter-label mobile-hidden">Credit Card</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-phone-numbers" value="Phone numbers" hidden="" name="filter[PhoneNumbers]" />
+						<label for="filter-phone-numbers" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#call-start" />
+							</svg>
+							<span class="filter-label mobile-hidden">Phone Numbers</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-email-addresses" value="Email addresses" hidden="" name="filter[EmailAddresses]" />
+						<label for="filter-email-addresses" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#mail" />
+							</svg>
+							<span class="filter-label  mobile-hidden">Email Addresses</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-names" value="Names" hidden="" name="filter[Names]" />
+						<label for="filter-names" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#face-plain" />
+							</svg>
+							<span class="filter-label  mobile-hidden">Names</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-usernames" value="Usernames" hidden="" name="filter[Usernames]" />
+						<label for="filter-usernames" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#avatar-default" />
+							</svg>
+							<span class="filter-label  mobile-hidden">Usernames</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-physical-addresses" value="Physical addresses" hidden="" name="filter[PhysicalAddresses]" />
+						<label for="filter-physical-addresses" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#mark-location" />
+							</svg>
+							<span class="filter-label  mobile-hidden">Physical Addresses</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-geographic-locations" value="Geographic locations" hidden="" name="filter[GeographicLocations]" />
+						<label for="filter-geographic-locations" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#find-location" />
+							</svg>
+							<span class="filter-label  mobile-hidden">Geographic Locations</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-ip-addresses" value="IP addresses" hidden="" name="filter[IPAddresses]" />
+						<label for="filter-ip-addresses" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#network-server" />
+							</svg>
+							<span class="filter-label  mobile-hidden">IP Addresses</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+						<input type="checkbox" id="filter-website-activity" value="Website activity" hidden="" name="filter[WebsiteActivity]" />
+						<label for="filter-website-activity" role="button" class="btn btn-toggle">
+							<svg class="current-color icon">
+								<use xlink:href="/img/icons.svg#globe" />
+							</svg>
+							<span class="filter-label  mobile-hidden">Website Activity</span>
+							<svg class="current-color icon when-checked mobile-hidden">
+								<use xlink:href="/img/icons.svg#check" />
+							</svg>
+							<svg class="current-color icon when-unchecked mobile-hidden">
+								<use xlink:href="/img/icons.svg#x" />
+							</svg>
+						</label>
+					</div>
+				</details>
 				<div>
 					<button type="submit" class="btn btn-accept" title="Check email">
 						<svg class="current-color icon">

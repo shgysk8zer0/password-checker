@@ -3,6 +3,14 @@ icon-mono,img/icon-mono.svg
 check,img/octicons/check.svg
 x,img/octicons/x.svg
 mail,img/octicons/mail.svg
+credit-card,img/octicons/credit-card.svg
+call-start,img/adwaita-icons/actions/call-start.svg
+face-plain,img/adwaita-icons/emotes/face-plain.svg
+find-location,img/adwaita-icons/actions/find-location.svg
+mark-location,img/adwaita-icons/actions/mark-location.svg
+avatar-default,img/adwaita-icons/status/avatar-default.svg
+network-server,img/adwaita-icons/places/network-server.svg
+globe,img/octicons/globe.svg
 calendar,img/octicons/calendar.svg
 link-external,img/octicons/ling-external.svg
 info,img/octicons/info.svg

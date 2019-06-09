@@ -10,6 +10,11 @@ export default class HTMLHaveIBeenPwnedForm extends HTMLFormElement {
 		this.setAttribute('mode', mode);
 	}
 
+	get filters() {
+		return [...this.querySelectorAll('input[type="checkbox"][name^="filter"][value]:checked')]
+			.map(input => input.value);
+	}
+
 	async connectedCallback() {
 		this.hidden = false;
 		this.addEventListener('submit', async event => {
@@ -73,7 +78,13 @@ export default class HTMLHaveIBeenPwnedForm extends HTMLFormElement {
 			referrerPolicy: 'no-referrer',
 			credentials:    'omit',
 		});
-		return resp.ok ? await resp.json() : [];
+		const filters = this.filters;
+		const breaches = resp.ok ? await resp.json() : [];
+		if (breaches.length !== 0 && filters.length !== 0) {
+			return breaches.filter(breach => filters.every(filter => breach.DataClasses.includes(filter)));
+		} else {
+			return breaches;
+		}
 	}
 
 	static async sha(str) {
