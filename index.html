@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="no-js background-primary color-default font-main border-box smooth-scroll" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#" data-service-worker="./service-worker.js" itemscope="">
+<html lang="en" dir="ltr" class="no-js background-primary color-default font-main border-box smooth-scroll" itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#" data-service-worker="./service-worker.js" data-reload-on-update="" itemscope="">
 	<head>
 		<base href="/" />
 		<meta charset="utf-8" />
@@ -11,7 +11,7 @@
 		<meta itemprop="keywords" content="passwords, security, have i been pwned" />
 		<meta name="referrer" content="no-referrer"/>
 		<meta name="mobile-web-app-capable" content="yes" />
-		<meta itemprop="thumbnailUrl" content="https://i.imgur.com/Ul9Ii2S.png" />
+		<meta itemprop="thumbnailUrl" content="https://i.imgur.com/vhh6c4Il.png" />
 		<!-- Social data -->
 		<!-- Facebook | OpenGraph -->
 		<meta property="og:type" content="website" />
@@ -19,43 +19,54 @@
 		<meta property="og:url" content="https://passwords.netlify.com" />
 		<meta property="og:description" content="Checks passwords against have i been pwned" />
 		<meta property="og:keywords" content="passwords, security, have i been pwned" />
-		<meta property="og:image" content="https://i.imgur.com/Ul9Ii2S.png" />
-		<meta property="og:image:height" content="512" />
-		<meta property="og:image:width" content="512" />
+		<meta property="og:image" content="https://i.imgur.com/vhh6c4Il.png" />
+		<meta property="og:image:height" content="640" />
+		<meta property="og:image:width" content="310" />
 		<!-- /Facebook | OpenGraph -->
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:creator" content="@shgysk8zer0" />
 		<meta name="twitter:description" content="Checks passwords against have i been pwned" />
-		<meta name="twitter:image" content="https://i.imgur.com/Ul9Ii2S.png" />
+		<meta name="twitter:image" content="https://i.imgur.com/vhh6c4Il.png" />
 		<!-- /Twitter -->
 		<!-- /Social data -->
 		<meta name="color-scheme" content="dark light" />
-		<meta name="theme-color" content="#006bdd" />
-		<meta name="msapplication-TileColor" content="#528ff9" />
+		<meta name="theme-color" content="#007bff" />
+		<meta name="msapplication-TileColor" content="#007bff" />
 		<meta name="msapplication-config" content="/browserconfig.xml" />
 		<title itemprop="headline">Password Checker</title>
-		<script type="module" src="/js/index.js" async=""></script>
+		<script type="module" src="/js/index.js" referrerpolicy="no-referrer" async=""></script>
+		<!-- <script src="/js/index.min.js" referrerpolicy="no-referrer" defer="" async=""></script> -->
 		<link rel="manifest" href="/manifest.json" />
 		<link rel="license" href="/LICENSE" />
 		<link rel="icon" href="/img/favicon.svg" type="image/svg+xml" sizes="any" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="/img/icon-32.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="/img/icon-16.png" />
-		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#528ff9" />
+		<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#007bff" />
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="preload" href="/img/icons.svg" as="image" type="image/svg+xml" />
 		<link rel="preload" as="style" href="https://cdn.kernvalley.us/components/github/user.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preload" as="fetch" type="text/html" href="https://cdn.kernvalley.us/components/github/user.html" crossorigin="anonymous" referrerpolicy="no-referrer" />
-		<link rel="stylesheet" href="/css/index.css" media="all" />
+		<!-- <link rel="stylesheet" href="/css/index.css" referrerpolicy="no-referrer" media="all" /> -->
+		<link rel="stylesheet" href="/css/index.min.css" referrerpolicy="no-referrer" media="all" />
 	</head>
-	<body id="top" class="font-main background-primary color-default">
-		<nav id="nav" class="sticky top shadow background-accent color-alt z-4">
-			<a href="#top">Try it out</a>
+	<body id="top" class="font-main background-primary color-default grid">
+		<nav id="nav" class="sticky top shadow background-accent color-alt z-4 flex row">
+			<a href="#pwned" class="inline-block">Try it out</a>
 			<span class="separator">|</span>
-			<a href="#how-it-works">How it works</a>
+			<a href="#how-it-works" class="inline-block">How it works</a>
+			<span class="grow-1"></span>
+			<button type="button" id="install-btn" class="btn nav-btn" title="Install Web App">
+				<svg class="icon current-color" width="22" height="22" fill="currentColor" role="img" aria-hidden="true">
+					<use xlink:href="/img/icons.svg#system-software-install"></use>
+				</svg>
+				<span class="mobile-hidden">Install</span>
+			</button>
 		</nav>
 		<main id="main">
+			<noscript>
+				<div class="status-box alert">JavaScript is required for this site to work.</div>
+			</noscript>
 			<form name="pwned" id="pwned" class="card shadow" method="POST" action="" autocomplete="off" hidden="">
 				<fieldset class="border-none">
 					<legend>
@@ -85,12 +96,11 @@
 						</svg>
 						<span class="mobile-hidden">Clear form</span>
 					</button>
-					<hr />
-					<div id="results" class="status-box info"></div>
 				</div>
+				<div id="result" class="status-box info"></div>
 			</form>
 			<br />
-			<details id="how-it-works" class="desc card shadow" open="">
+			<details id="how-it-works" class="desc card shadow accordion" open="">
 				<summary>
 					<h3 class="inline-block">How this works</h3>
 				</summary>
@@ -165,7 +175,7 @@
 				</github-user>
 			</div>
 		</footer>
-		<button type="button" is="share-button" class="round shadow fixed" text="Check if your passwords are secure" aria-label="Share" hidden="">
+		<button type="button" is="share-button" class="btn btn-primary btn-rount round shadow fixed" text="Check if your passwords are secure" aria-label="Share" hidden="">
 			<svg class="current-color icon">
 				<use xlink:href="/img/icons.svg#public-share"></use>
 			</svg>

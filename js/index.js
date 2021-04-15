@@ -1,11 +1,14 @@
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://cdn.kernvalley.us/components/notification/html-notification.js';
-import 'https://cdn.kernvalley.us/components/share-button.js';
 import 'https://cdn.kernvalley.us/components/github/user.js';
+import 'https://cdn.kernvalley.us/components/share-button.js';
+import 'https://cdn.kernvalley.us/components/current-year.js';
+import 'https://cdn.kernvalley.us/components/install/prompt.js';
 import { on, text, attr, toggleClass, animate, ready } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { prefersReducedMotion } from 'https://cdn.kernvalley.us/js/std-js/media-queries.js';
 import { pwned } from 'https://cdn.kernvalley.us/js/std-js/pwned.js';
 import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
+import { installPrompt } from './functions.js';
 import { messages } from './consts.js';
 
 toggleClass(document.documentElement, {
@@ -16,6 +19,11 @@ toggleClass(document.documentElement, {
 });
 
 ready().then(async () => {
+	customElements.whenDefined('install-prompt').then(() => {
+		on('#install-btn', 'click', () => installPrompt().then(console.log, console.error));
+		attr('#install-btn', { hidden: false });
+	});
+
 	on(document.forms.pwned, {
 		submit: async event => {
 			event.preventDefault();
@@ -66,12 +74,12 @@ ready().then(async () => {
 							break;
 						}
 					}
-				})
+				});
 
 				text('#result', messages.found);
 				toggleClass('#result', { info: false, alert: true, success: false });
 			} else {
-				text('#result', message.notFound);
+				text('#result', messages.notFound);
 				toggleClass('#result', { info: false, alert: false, success: true });
 			}
 
@@ -103,6 +111,6 @@ ready().then(async () => {
 		}
 	});
 
-	test('#result', messages.initial);
+	text('#result', messages.initial);
 	attr('#pwned', { hidden: false });
 });

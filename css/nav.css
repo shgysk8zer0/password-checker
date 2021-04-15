@@ -1,3 +1,16 @@
 #nav {
 	grid-area: nav;
+	align-items: center;
+	gap: 18px;
+	padding-left: 2rem;
+}
+
+#nav > .nav-btn {
+	background-color: transparent;
+	color: inherit;
+	border: none;
+}
+
+#install-btn > svg {
+	margin-bottom: 10px;
 }
