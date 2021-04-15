@@ -14,7 +14,8 @@
       "js": "js/",
       "img": "img/",
       "html": "./"
-    }
+    },
+    "icons": "img/icons.csv"
   },
   "repository": {
     "type": "git",
