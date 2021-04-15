@@ -18,6 +18,8 @@ const config = {
 		'/css/index.min.css',
 		'https://cdn.kernvalley.us/components/github/user.css',
 		'https://cdn.kernvalley.us/components/install/prompt.css',
+		'https://cdn.kernvalley.us/components/notification/html-notification.css',
+		'https://cdn.kernvalley.us/components/toast-message.css',
 
 		/* Images */
 		'/img/icons.svg',
@@ -29,6 +31,8 @@ const config = {
 		/* HTML / Templates */
 		'https://cdn.kernvalley.us/components/github/user.html',
 		'https://cdn.kernvalley.us/components/install/prompt.html',
+		'https://cdn.kernvalley.us/components/notification/html-notification.html',
+		'https://cdn.kernvalley.us/components/toast-message.html',
 		'https://cdn.kernvalley.us/img/logos/pwa-badge.svg',
 		'https://cdn.kernvalley.us/img/logos/instagram.svg',
 
