@@ -3,40 +3,4 @@
   base = "./"
   publish = "./"
   command = "npm run build"
-  [build.environment]
-    GIT_LFS_ENABLED = "1"
-[[headers]]
-  for="/*"
-  [headers.values]
-    Link = '''
-      </css/styles/index.css>; rel=preload; as=style, \
-      </css/js/index.js>; rel=preload; as=script, \
-      </img/icons.svg>; rel=preload; as=image
-    '''
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1; mode=block"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=31536000"
-    Content-Security-Policy = '''
-      default-src 'self';
-      base-uri 'self';
-      img-src 'self' https://cdn.kernvalley.us https://haveibeenpwned.com/Content/Images/PwnedLogos/;
-      script-src 'self';
-      style-src 'self';
-      connect-src 'self' https://api.pwnedpasswords.com https://haveibeenpwned.com/api/v2/;
-      worker-src: 'self';
-      font-src 'self';
-      media-src 'none';
-      child-src 'self';
-      object-src: 'none';
-      manifest-src 'self';
-      form-action 'self';
-      report-uri https://superuser.report-uri.com/r/d/csp/enforce;
-      reflected-xss block;
-      block-all-mixed-content;
-      upgrade-insecure-requests;
-      disown-opener;'''
-# [[redirects]]
-  # from = ""
-  # to = ""
+  functions = "api"
