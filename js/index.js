@@ -1,92 +1,116 @@
-import './std-js/deprefixer.js';
-import './std-js/shims.js';
-import './share-button.js';
-import {$, ready, registerServiceWorker} from './std-js/functions.js';
-import './have-i-been-pwned-form.js';
+import 'https://cdn.kernvalley.us/js/std-js/shims.js';
+import 'https://cdn.kernvalley.us/components/notification/html-notification.js';
+import 'https://cdn.kernvalley.us/components/github/user.js';
+import 'https://cdn.kernvalley.us/components/share-button.js';
+import 'https://cdn.kernvalley.us/components/current-year.js';
+import 'https://cdn.kernvalley.us/components/install/prompt.js';
+import { on, text, attr, toggleClass, animate, ready } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
+import { prefersReducedMotion } from 'https://cdn.kernvalley.us/js/std-js/media-queries.js';
+import { pwned } from 'https://cdn.kernvalley.us/js/std-js/pwned.js';
+import { getCustomElement } from 'https://cdn.kernvalley.us/js/std-js/custom-elements.js';
+import { installPrompt } from './functions.js';
+import { messages } from './consts.js';
 
-if (document.documentElement.dataset.hasOwnProperty('serviceWorker')) {
-	registerServiceWorker(document.documentElement.dataset.serviceWorker).catch(console.error);
-}
+toggleClass(document.documentElement, {
+	'js': true,
+	'no-js': false,
+	'no-dialog': document.createElement('dialog') instanceof HTMLUnknownElement,
+	'no-details': document.createElement('details') instanceof HTMLUnknownElement,
+});
 
-document.documentElement.classList.replace('no-js', 'js');
-document.body.classList.toggle('no-dialog', document.createElement('dialog') instanceof HTMLUnknownElement);
-
-ready().then(() => {
-	$('[data-scroll-to]').click(event => {
-		const target = document.querySelector(event.target.closest('[data-scroll-to]').dataset.scrollTo);
-		target.scrollIntoView({
-			bahavior: 'smooth',
-			block: 'start',
-		});
+ready().then(async () => {
+	customElements.whenDefined('install-prompt').then(() => {
+		on('#install-btn', 'click', () => installPrompt().then(console.log, console.error));
+		attr('#install-btn', { hidden: false });
 	});
 
-	$('#password-form').on('foundpassword', async event => {
-		const tpl = document.getElementById('password-found-template').content.cloneNode(true);
-		const container = document.getElementById('password-found-results');
-		$('.found', tpl).text(event.detail.found);
-		$('.password-found', event.target).remove();
-		container.append(tpl);
-		container.parentElement.scrollIntoView({
-			behavior: 'smooth',
-			block: 'start',
-		});
-	});
+	on(document.forms.pwned, {
+		submit: async event => {
+			event.preventDefault();
+			attr('button', { disabled: true });
+			const data = new FormData(event.target);
 
-	$('#password-form').reset(event => $('.password-found', event.target).remove());
+			if (await pwned(data.get('password'))) {
+				if (! prefersReducedMotion()) {
+					animate('#pwned', [{
+						transform: 'none',
+					}, {
+						transform: 'rotate(.005turn)',
+					}, {
+						transform: 'none'
+					}, {
+						transform: 'rotate(-.005turn)',
+					}], {
+						duration: 200,
+						easing: 'ease-in-out',
+						iterations: 3,
+					});
+				}
 
-	$('#email-form').on('foundbreaches', async event => {
-		const tpl = document.getElementById('breach-template').content;
-		const container = document.getElementById('breaches');
-
-		if (event.detail.found.length === 0) {
-			$(container.children).remove();
-			const msg = document.createElement('p');
-			msg.classList.add('msg');
-			msg.textContent = 'That email address was not found in any breaches.';
-			container.append(msg);
-		} else {
-			const items = event.detail.found.map(breach => {
-				const classes = [
-					'Verified',
-					'Fabricated',
-					'Sensitive',
-					'Retired',
-					'Spamlist',
-				]
-					.filter(cl => breach[`Is${cl}`] === true)
-					.map(cl => `is-${cl.toLowerCase()}`);
-				const el = tpl.cloneNode(true);
-				$('.breach', el).addClass(...classes);
-				const items = breach.DataClasses.map(item => {
-					const span = document.createElement('span');
-					span.textContent = item;
-					span.classList.add('breach-tag');
-					return span;
+				const HTMLNotification = await getCustomElement('html-notification');
+				const notification = new HTMLNotification('Password insecure', {
+					body: messages.found,
+					tag: 'password-found',
+					requireInteraction: true,
+					vibrate: [200, 0, 200],
+					actions: [{
+						title: 'Dismiss',
+						action: 'dismiss',
+					}, {
+						title: 'Reset',
+						action: 'reset'
+					}]
 				});
 
-				const date = new Date(breach.BreachDate);
-				if (breach.Domain !== '') {
-					$('.breach-url', el).attr({href: `https://${breach.Domain}`});
-				}
-				$('.breach-title', el).text(breach.Title);
-				// $('.breach-logo', el).attr({src: breach.LogoPath});
-				$('.breach-description', el).html(breach.Description);
-				$('.breach-date', el).text(date.toLocaleDateString());
-				$('.breach-count', el).text(breach.PwnCount);
-				$('.breach-date', el).attr({datetime: date.toISOString()});
-				$('.breach-includes', el).append(...items);
-				return el;
-			});
+				notification.addEventListener('notificationclick', ({ target, action }) => {
+					switch (action) {
+						case 'reset': {
+							document.forms.pwned.reset();
+							target.close();
+							break;
+						}
+						case 'dismiss': {
+							notification.close();
+							break;
+						}
+					}
+				});
 
-			$(container.children).remove();
+				text('#result', messages.found);
+				toggleClass('#result', { info: false, alert: true, success: false });
+			} else {
+				text('#result', messages.notFound);
+				toggleClass('#result', { info: false, alert: false, success: true });
+			}
 
-			container.append(...items);
-			container.parentElement.scrollIntoView({
-				behavior: 'smooth',
-				block: 'start',
-			});
+			attr('button', { disabled: false });
+		},
+		reset: () => {
+			attr('button', { disabled: false });
+			attr('#password', { type: 'password' });
+			text('#password-toggle', 'Reveal password');
+			toggleClass('#result', { info: true, success: false, alert: false });
+			text('#result', messages.initial);
+			document.getElementById('password').focus();
 		}
 	});
 
-	$('#email-form').reset(event => $('.breach, .msg', event.target).remove());
+	on('#password-toggle', 'click', () => {
+		const input = document.getElementById('password');
+
+		switch (input.type) {
+			case 'password':
+				attr(input, { type: 'text' });
+				text('#password-toggle', 'Hide password');
+				break;
+
+			case 'text':
+				attr(input, { type: 'password' });
+				text('#password-toggle', 'Reveal password');
+				break;
+		}
+	});
+
+	text('#result', messages.initial);
+	attr('#pwned', { hidden: false });
 });
