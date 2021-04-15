@@ -1,6 +1,7 @@
 import 'https://cdn.kernvalley.us/js/std-js/shims.js';
 import 'https://cdn.kernvalley.us/components/notification/html-notification.js';
 import 'https://cdn.kernvalley.us/components/share-button.js';
+import 'https://cdn.kernvalley.us/components/github/user.js';
 import { on, text, attr, toggleClass, animate, ready } from 'https://cdn.kernvalley.us/js/std-js/dom.js';
 import { prefersReducedMotion } from 'https://cdn.kernvalley.us/js/std-js/media-queries.js';
 import { pwned } from 'https://cdn.kernvalley.us/js/std-js/pwned.js';
