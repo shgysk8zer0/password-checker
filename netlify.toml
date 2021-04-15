@@ -3,4 +3,3 @@
   base = "./"
   publish = "./"
   command = "npm run build"
-  functions = "api"
